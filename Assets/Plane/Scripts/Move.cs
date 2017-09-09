@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Move : MonoBehaviour {
 
     Rigidbody2D rb;
     public float speed, rspeed;
+    public float maxVelocity;
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -22,5 +20,6 @@ public class Move : MonoBehaviour {
         {
             rb.AddForce( transform.up*speed );
         }
+        rb.velocity = rb.velocity.normalized * Mathf.Clamp(rb.velocity.magnitude, 0, maxVelocity);
     }
 }
