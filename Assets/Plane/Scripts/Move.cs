@@ -10,14 +10,12 @@ public class Move : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 	}
 
-    private void Update()
-    {
+    private void Update() {
         transform.Rotate( 0f, 0f, Input.GetAxis( "Horizontal" )*rspeed );
     }
 
     void FixedUpdate () {
-        if( Input.GetButton( "Forward" ) )
-        {
+        if( Input.GetButton( "Forward" ) ) {
             rb.AddForce( transform.up*speed );
         }
         rb.velocity = rb.velocity.normalized * Mathf.Clamp(rb.velocity.magnitude, 0, maxVelocity);
